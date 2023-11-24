@@ -45,7 +45,7 @@ PowerPulseGYM is a web application built with Django, designed for managing gym 
 The application will be accessible at http://localhost:8000/.
 
 
-##Contributing
+#Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
 
