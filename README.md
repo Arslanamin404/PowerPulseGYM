@@ -53,4 +53,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Author
 
-Mohammad Arsalan Rather(mailto:arslanamin.org@gmail.com)
+[Mohammad Arsalan Rather](mailto:arslanamin.org@gmail.com)
