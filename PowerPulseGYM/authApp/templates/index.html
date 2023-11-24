@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  {% block title %} <title>Power Pulse GYM - Home</title>{% endblock title %}
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href=" {% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href=" {% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href=" {% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css ' %}" rel="stylesheet">
+  <link href=" {% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href=" {% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/css/pricing.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      {% comment %} <h1 class="logo me-auto me-lg-0"><a href="index.html">PPG <span>GYM</span></a></h1> {% endcomment %}
+      <a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src="{% static 'assets/img/logo.png' %}" alt="Power Pulse GYM" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
+          <li class="dropdown"><a class="{% if request.path == '/enroll/' %}active {% elif request.path == '/profile/' %}active{% endif %}" href="#"><span>Memberships</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url "enroll" %}">Enroll</a></li>
+              <li><a href="{% url "profile" %}">View Profile</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#">About</a></li>
+          <li><a class="nav-link scrollto {% if request.path == 'contact' %}active{% endif %}" href="{% url "contact" %}">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- .navbar -->
+
+      {% if user.is_authenticated %}
+      <a href="{% url "logout" %}" class="btn btn-danger scrollto">Logout</a>
+      {% else %}
+      <a href="{% url "signup" %}" class="get-started-btn scrollto">SignUp</a>
+      {% endif %}
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+          <h1><span>E</span>mpower <span>C</span>onquer, <span>A</span>chieve <span>R</span>epeat<span>!</span></h1>
+          <h2>Elevate your strength and conquer your goals</h2>
+        </div>
+      </div>
+
+      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-person"></i>
+            <h3><a href="{% url "enroll" %}">Personalized Training</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-dumbbell"></i>
+            <h3><a href="{% url "enroll" %}">Modern Equipments</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-people-group"></i>
+            <h3><a href="{% url "enroll" %}">Group Classes</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="fa-solid fa-bottle-water"></i>
+            <h3><a href="{% url "enroll" %}">Nuturitional Guidance</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <i class="fa-regular fa-clock"></i>
+            <h3><a href="{% url "enroll" %}">24/7 Accesss</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- End Hero -->
+  
+  <!-- Pricing start -->
+  <div class="demo">
+    <div class="container">
+        <div class="row text-center">
+            <h1 class="heading-title">Membership Plans</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header bg-warning">
+                        <h3 class="heading">Basic Plan</h3>
+                        <span class="subtitle">1 Month Membership</span>
+                        <div class="price-value">1500
+                            <span class="currency">₹</span>
+                            <span class="month">/mo</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>1 Month access to GYM</li>
+                        <li>Standard Equipments</li>
+                        <li>Group Classes</li>
+                    </ul>
+                    <a href="{% url "enroll" %}" class="btn btn-outline-warning ">Enroll Now<i class="px-2 fa fa-angle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6">
+                <div class="pricingTable">
+                    <div class="pricingTable-header bg-warning">
+                        <h3 class="heading">Standard Plan</h3>
+                        <span class="subtitle">6 months Membership Plan</span>
+                        <div class="price-value">7800
+                          <span class="currency">₹</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-content">
+                      <li>All Basic Plan Featues</li>
+                      <li>Standard + Semi Premium Equipments</li>
+                      <li>Nuturitional Guidance</li>
+                  </ul>
+                <a href="{% url "enroll" %}" class="btn btn-outline-warning ">Enroll Now<i class="px-2 fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-md-4 col-sm-6">
+              <div class="pricingTable">
+                  <div class="pricingTable-header bg-warning">
+                      <h3 class="heading">Premium Plan</h3>
+                      <span class="subtitle">12 months Membership Plan</span>
+                      <div class="price-value">15000
+                        <span class="currency">₹</span>
+                      </div>
+                  </div>
+                  <ul class="pricing-content">
+                    <li>All Standard Plan Featues</li>
+                    <li>Premium Equipments</li>
+                    <li>Personalized Nuturition Plans</li>
+                </ul>
+                <a href="{% url "enroll" %}" class="btn btn-outline-warning ">Enroll Now<i class="px-2 fa fa-angle-right"></i></a>
+              </div>
+          </div>
+
+        </div>
+    </div>
+</div>
+
+  
+  <!-- Pricing End -->
+  <!-- Crousel start -->
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static "assets/img/cr-1.jpg" %}" class="d-block w-100" alt="Powe Pulse GYM">
+      </div>
+      <div class="carousel-item active">
+        <img src="{% static "assets/img/cr-2.jpg" %}" class="d-block w-100" alt="Powe Pulse GYM">
+      </div>
+      <div class="carousel-item active">
+        <img src="{% static "assets/img/cr-3.jpg" %}" class="d-block w-100" alt="Powe Pulse GYM">
+      </div>
+      <div class="carousel-item active">
+        <img src="{% static "assets/img/cr-4.jpg" %}" class="d-block w-100" alt="Powe Pulse GYM">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- End Crousel -->
+  
+  <main id="main">
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+
+        <div class="text-center">
+          <h3 class="text-warning">Unleash Your Potential</h3>
+          <p>Embark on a transformative fitness journey at <a href="{% url "home" %}"><span class="text-warning text-decoration-underline"> <b> Power Pulse GYM </b></span></a>. Oyr expert trainers and state-of-the-art facilities are dedicated ti sculpting the best version of you. Embrace the power of wellness - Join us Today and redefine your limits!</p>
+          <a class="cta-btn" href="{% url "enroll" %}">Enroll Now</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3>Gp<span>.</span></h3>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <span class="text-warning">PowerPulseGYM</span>. All Rights Reserved
+      </div>
+      <div class="credits">
+       Developed by <strong> <a href="https://bootstrapmade.com/">Arsalan Rather</a></strong>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Fontawesome JS Files -->
+  <script src="https://kit.fontawesome.com/0470ecb1aa.js" crossorigin="anonymous"></script>
+  <!-- Vendor JS Files -->
+  <script src=" {% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src=" {% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src=" {% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src=" {% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src=" {% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src=" {% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src=" {% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src=" {% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>

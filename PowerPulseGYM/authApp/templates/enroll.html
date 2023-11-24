@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %} <title>Enroll Now - Power Pulse GYM</title>{% endblock title %}
+
+{% block head %}
+<h4 class="text-warning fst-italic">Enroll Today for a Healthier Tomorrow</h4>
+<div class="container pt-2 mt-1">
+    <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-8">
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+
+            <form action = "{% url "enroll" %}" method = "POST">
+                {% csrf_token %}
+                <div class="row my-3">
+                    <input type="text" id="fullname" class="form-control mb-2" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="row mb-3">
+                    <input type="email" id="Email" class="form-control mb-2" name="email" value="{{user.email}}" placeholder="Email" readonly required>
+                </div>
+                <div class="row mb-3">
+                    <input type="number" class="form-control mb-2" name="number" placeholder="Phone Number" value={{user.username}} readonly required>
+                </div>
+                <div class="row form-group mb-3">
+                    <select class="form-control mb-2" name="gender" id="gender" required>
+                        <option slected>Gender</option>
+                        <option value = "Male">Male</option>
+                        <option value = "Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="row form-floating mb-3">
+                    <input type="date" class="form-control mb-2" name="dob" id="dob" placeholder="" required>
+                    <label for="dob">Date Of Birth</label>
+                </div>
+
+                <div class="row form-group mb-3">
+                    <select class="form-control mb-2" name="membership_plan" id="membership" required>
+                        <option slected>Membership Plans</option>
+                        {% for plan in memberships %}
+                        <option value="{{plan.plan_name}} - {{plan.plan_price}} Rs">{{plan.plan_name}} - {{plan.plan_price}} Rs</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="row form-group mb-3">
+                    <select class="form-control mb-2" name="trainer" id="trainer" required>
+                        <option slected>Trainers</option>
+                        {% for trainer in trainers %}
+                        <option value="{{trainer.name}} - {{trainer.expertise}}">{{trainer.name}} - {{trainer.expertise}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="row mb-3">
+                    <input type="text" class="form-control mb-2" name="address" placeholder="Address" required>
+                </div>
+
+                <div class="row mb-3">
+                    <button class="mt-2 btn btn-outline-warning px-5" type="submit">Enroll</button>
+                </div>
+              </form>
+            </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
+{% endblock head %}
+

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} <title>Profile - Power Pulse GYM</title>{% endblock title %}
+
+{% block head %}
+<h1><span>Y</span>our <span>D</span>etails</h1>
+<hr class="border border-light">
+<div class="container pt-2 mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="list-group">
+                <a href="#" class="list-group-item bg-dark text-light"><i>Full Name :</i> <strong class="text-warning">{{user.name}}</strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Email :</i> <strong class="text-warning">{{user.email}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Gender :</i> <strong class="text-warning">{{user.gender}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Phone Number : </i> <strong class="text-warning"> {{user.phone}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>DOB :</i> <strong class="text-warning">{{user.date_of_birth}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Address :</i> <strong class="text-warning">{{user.address}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Membership Plan :</i> <strong class="text-warning">{{user.membership_plan}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Trainer :</i> <strong class="text-warning">{{user.trainer}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Payment Status :</i> <strong class="text-warning">{{user.payment_status}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Amount Paid :</i> <strong class="text-warning">{{user.payment_paid}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Membership valid till:</i> <strong class="text-warning">{{user.due_date}} </strong></a>
+                <a href="#" class="list-group-item bg-dark text-light"><i>Joining Date :</i> <strong class="text-warning">{{user.time_stamp}} </strong></a>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock head %}
