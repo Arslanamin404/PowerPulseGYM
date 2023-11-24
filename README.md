@@ -48,7 +48,7 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](PowerPulseGYM/LICENSE). Please see the [LICENSE](PowerPulseGYM/LICENSE) file for more details.
 
 
 ## Author
