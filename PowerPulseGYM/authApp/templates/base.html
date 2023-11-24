@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  {% block title %} <title>Power Pulse GYM</title>{% endblock title %}
+  {% block title %} <title>Power Pulse GYM - Home</title>{% endblock title %}
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href=" {% static 'assets/css/style.css' %}" rel="stylesheet">
+  <link href=" {% static 'assets/css/pricing.css' %}" rel="stylesheet">
 
 </head>
 
@@ -36,34 +37,31 @@
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
-      <a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src=" {% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+
+      {% comment %} <h1 class="logo me-auto me-lg-0"><a href="index.html">PPG <span>GYM</span></a></h1> {% endcomment %}
+      <a href="{% url 'home' %}" class="logo me-auto me-lg-0"><img src="{% static 'assets/img/logo.png' %}" alt="Power Pulse GYM" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">Home</a></li>
-          <li><a class="nav-link scrollto " href="#">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#">Services</a></li>
           <li class="dropdown"><a class="{% if request.path == '/enroll/' %}active {% elif request.path == '/profile/' %}active{% endif %}" href="#"><span>Memberships</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url "enroll" %}">Enroll</a></li>
-              <li><a href="#">Workouts</a></li>
-              <li><a href="#">Suppliments</a></li>
-              <li><a href="#">Tracker</a></li>
               <li><a href="{% url "profile" %}">View Profile</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#">About</a></li>
-          <li><a class="nav-link scrollto {% if request.path == '/contact/' %}active{% endif %}" href="{% url "contact" %}">Contact</a></li>
+          <li><a class="nav-link scrollto {% if request.path == 'contact' %}active{% endif %}" href="{% url "contact" %}">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav>
-    {% if user.is_authenticated %}
-    <a href="{% url "logout" %}" class="btn btn-danger scrollto">Logout</a>
-    {% else %}
-    <a href="{% url "signup" %}" class="get-started-btn scrollto">SignUp</a>
-    {% endif %}
-    <!-- .navbar -->
+      </nav>
+      <!-- .navbar -->
 
+      {% if user.is_authenticated %}
+      <a href="{% url "logout" %}" class="btn btn-danger scrollto">Logout</a>
+      {% else %}
+      <a href="{% url "signup" %}" class="get-started-btn scrollto">SignUp</a>
+      {% endif %}
     </div>
   </header><!-- End Header -->
 
@@ -89,9 +87,13 @@
   </main>
 
 
+
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
+  <!-- Fontawesome JS Files -->
+  <script src="https://kit.fontawesome.com/0470ecb1aa.js" crossorigin="anonymous"></script>
   <!-- Vendor JS Files -->
   <script src=" {% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
   <script src=" {% static 'assets/vendor/aos/aos.js' %}"></script>
