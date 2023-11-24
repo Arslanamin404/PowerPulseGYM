@@ -138,3 +138,7 @@ def profile(request):
     else:
         messages.warning(request, "Please Login first and Try Again to view your profile!")
         return redirect('login')
+
+
+def about(request):
+    return render(request,"about.html")

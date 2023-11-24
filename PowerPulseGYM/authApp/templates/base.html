@@ -50,7 +50,7 @@
               <li><a href="{% url "profile" %}">View Profile</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#">About</a></li>
+          <li><a class="nav-link scrollto {% if request.path == 'about' %}active{% endif %}" href="{% url "about" %}">About</a></li>
           <li><a class="nav-link scrollto {% if request.path == 'contact' %}active{% endif %}" href="{% url "contact" %}">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
