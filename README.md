@@ -24,11 +24,7 @@ PowerPulseGYM is a web application built with Django, designed for managing gym 
 
    `pip install -r requirements.txt`
 
-
-
 4. **Dont forget to setup your database (mysql/mysqlLite/oracle)**
-
-
 
 5. **Apply migrations:**
 
@@ -54,6 +50,7 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 This project is licensed under the [MIT License](LICENSE).
 
-##Author
+
+## Author
 
 Mohammad Arsalan Rather(mailto:arslanamin.org@gmail.com)
