@@ -37,6 +37,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'futuregen.jk@gmail.com'
 EMAIL_HOST_PASSWORD = 'lmioisyjkqrvsglc'  # app password
+# EMAIL_HOST_USER = 'your_email_id'
+# EMAIL_HOST_PASSWORD = 'your_app_password'  
 DEFAULT_FROM_EMAIL = 'noreply@domain.com'
 
 

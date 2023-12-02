@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Contact(models.Model):
     name = models.CharField(max_length=80)
@@ -9,6 +9,7 @@ class Contact(models.Model):
 
 
 class Enroll(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=120)
     email = models.EmailField(max_length=254)
     gender = models.CharField(max_length=50)

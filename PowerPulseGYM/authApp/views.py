@@ -34,11 +34,14 @@ def signup(request):
                 messages.warning(request, "This email is already registered.")
                 return redirect('signup')
             else:
-                user = User.objects.create_user(first_name=name, username=username, email=email, password=password)
+                user = User.objects.create_user(
+                    first_name=name, username=username, email=email, password=password)
                 user.save()
 
                 # Define the context for the template
-                context = {'name': name,}
+                context = {
+                    'name': name,
+                }
 
                 # Load your custom HTML template
                 html_template = get_template('email.html')
@@ -54,13 +57,15 @@ def signup(request):
                 recipient_list = [email,]
 
                 # Create the EmailMultiAlternatives object
-                msg = EmailMultiAlternatives(subject, '', from_email, recipient_list)
+                msg = EmailMultiAlternatives(
+                    subject, '', from_email, recipient_list)
                 msg.attach_alternative(html_content, "text/html")
 
                 # Send the email
                 msg.send()
 
-                messages.success(request, "Congratulations! You have registered successfully. Please Login!")
+                messages.success(
+                    request, "Congratulations! You have registered successfully. Please Login!")
                 return redirect('login')
         else:
             messages.warning(request, "Password does not match!")
@@ -133,7 +138,8 @@ def enroll_now(request):
                     request, "Invalid Phone number! Please enter a valid Phone Number.")
                 return redirect('enroll')
             else:
-                enrollment = Enroll(name=name,
+                enrollment = Enroll(user=request.user,  # Add this line to associate with the logged-in user
+                                    name=name,
                                     email=email,
                                     phone=phone,
                                     gender=gender,
@@ -142,6 +148,7 @@ def enroll_now(request):
                                     trainer=trainer,
                                     address=address)
                 enrollment.save()
+
                 messages.success(
                     request, "Congratulations! You have enrolled successfully. Thanks for joining us!")
                 return redirect('enroll')
@@ -154,12 +161,15 @@ def enroll_now(request):
 
 def profile(request):
     if request.user.is_authenticated:
-        user_phone = request.user.username
-        user = Enroll.objects.get(phone=user_phone)
-        print(user.name)
-        print(user.email)
-        context = {'user': user}
-        return render(request, "profile.html", context)
+        try:
+            user = Enroll.objects.get(phone=request.user.username)
+            print(user.name, user.email)
+            context = {'user': user}
+            return render(request, "profile.html", context)
+        except Enroll.DoesNotExist:
+            messages.warning(
+                request, "You are not enrolled. Please enroll to view your profile.")
+            return redirect('enroll')
     else:
         messages.warning(
             request, "Please Login first and Try Again to view your profile!")
