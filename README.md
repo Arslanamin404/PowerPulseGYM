@@ -14,29 +14,41 @@ PowerPulseGYM is a web application built with Django, designed for managing gym 
 
 1. **Clone the repository:**
 
-   `git clone https://github.com/your-username/powerpulsegym.git`
+   ```bash
+   git clone https://github.com/Arslanamin404/PowerPulseGYM.git
+   ```
 
-2. **Navigate to the project directory:**
+3. **Navigate to the project directory:**
 
-   `cd powerpulsegym`
+   ```bash
+   cd powerpulsegym
+   ```
    
-3. **Install the required dependencies:**
+5. **Install the required dependencies:**
 
-   `pip install -r requirements.txt`
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4. **Dont forget to setup your database (mysql/mysqlLite/oracle)**
+7. **Dont forget to setup your database (mysql/mysqlLite/oracle)**
 
-5. **Apply migrations:**
+8. **Apply migrations:**
 
-   `python manage.py migrate`
+   ```bash
+   python manage.py migrate
+   ```
 
-6. **Create a superuser for admin access:**
+10. **Create a superuser for admin access:**
 
-   `python manage.py createsuperuser`
+   ```bash
+   python manage.py createsuperuser
+   ```
    
-7. **Run the development server:**
+11. **Run the development server:**
 
-    `python manage.py runserver`
+    ```bash
+    python manage.py runserver
+    ```
 
 The application will be accessible at http://localhost:8000/.
 
@@ -48,7 +60,7 @@ Contributions are welcome! If you find any issues or have suggestions for improv
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](PowerPulseGYM/LICENSE). Please see the [LICENSE](PowerPulseGYM/LICENSE) file for more details.
 
 
 ## Author
