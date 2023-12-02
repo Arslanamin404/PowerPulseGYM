@@ -2,6 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from .models import *
+from django.core.mail import send_mail
+from django.template.loader import get_template
+from django.core.mail import EmailMultiAlternatives
+from django.template import Context
+from django.conf import settings
 
 
 def home(request):
@@ -29,13 +34,33 @@ def signup(request):
                 messages.warning(request, "This email is already registered.")
                 return redirect('signup')
             else:
-                user = User.objects.create_user(first_name=name,
-                                                username=username,
-                                                email=email,
-                                                password=password)
+                user = User.objects.create_user(first_name=name, username=username, email=email, password=password)
                 user.save()
-                messages.success(
-                    request, "Congratulations! You have registered successfully. Please Login!")
+
+                # Define the context for the template
+                context = {'name': name,}
+
+                # Load your custom HTML template
+                html_template = get_template('email.html')
+
+                # Render the HTML template with the context
+                html_content = html_template.render(context, request)
+
+                # Email Subject
+                subject = 'Welcome to Power Pulse Gym - Let\'s Ignite Your Fitness Journey!'
+
+                # Sender and recipient email addresses
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [email,]
+
+                # Create the EmailMultiAlternatives object
+                msg = EmailMultiAlternatives(subject, '', from_email, recipient_list)
+                msg.attach_alternative(html_content, "text/html")
+
+                # Send the email
+                msg.send()
+
+                messages.success(request, "Congratulations! You have registered successfully. Please Login!")
                 return redirect('login')
         else:
             messages.warning(request, "Password does not match!")
@@ -133,12 +158,13 @@ def profile(request):
         user = Enroll.objects.get(phone=user_phone)
         print(user.name)
         print(user.email)
-        context = {'user':user}
-        return render(request, "profile.html",context)
+        context = {'user': user}
+        return render(request, "profile.html", context)
     else:
-        messages.warning(request, "Please Login first and Try Again to view your profile!")
+        messages.warning(
+            request, "Please Login first and Try Again to view your profile!")
         return redirect('login')
 
 
 def about(request):
-    return render(request,"about.html")
+    return render(request, "about.html")
