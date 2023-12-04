@@ -35,14 +35,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-<<<<<<< HEAD
-EMAIL_HOST_USER = 'futuregen.jk@gmail.com'
-EMAIL_HOST_PASSWORD = 'lmioisyjkqrvsglc'  # app password
-=======
 EMAIL_HOST_USER = 'your_email_id'
 EMAIL_HOST_PASSWORD = 'your_app_password'  
->>>>>>> 607207c76405520f67b4bc3cf04486dd09d0f281
 DEFAULT_FROM_EMAIL = 'noreply@domain.com'
+
 
 
 # Application definition
