@@ -1,41 +1,48 @@
-{% extends "base.html" %}
-{% block title %} <title>About Us - Power Pulse GYM</title>{% endblock title %}
-{% block head %}
-<h1><span>Y</span>our <span>P</span>remier <span>F</span>itness <span>D</span>estination</h1>
-<hr class="border border-light">
+{% extends "base.html" %} {% block title %}
+<title>About Us - Power Pulse GYM</title>{% endblock title %} {% block head %}
+<h1 style="font-family: monospace">
+  <span>P</span>rime <span>F</span>itness <span>H</span>ub
+</h1>
+<hr class="border border-warning" />
+
 <div>
-    <h2 class="text-warning my-3">About Us</h2>
-    <p class="text-light">At PowerPulseGYM, we are dedicated to providing a professional and results-driven fitness experience. Established in [year], our facility is designed to cater to individuals of all fitness levels, offering a dynamic environment where you can achieve your wellness goals.</p>
-</div>
+  <h2 class="text-warning mt-4 mb-3 text-decoration-underline">About Us</h2>
+  <p class="text-light lh-md fs-5" style="text-align: justify">
+    At PowerPulseGYM, we are dedicated to providing a professional and
+    results-driven fitness experience. Established in [year], our facility is
+    designed to cater to individuals of all fitness levels, offering a dynamic
+    environment where you can achieve your wellness goals. Our state-of-the-art
+    gym is equipped with the latest technology and premium fitness equipment to
+    ensure a top-tier workout experience. Our team of certified trainers is
+    committed to your success. Receive personalized fitness plans, expert
+    advice, and ongoing support to maximize your results. Explore a range of
+    innovative workout programs, from high-intensity interval training (HIIT) to
+    specialized strength training, tailored to meet your unique needs.
+  </p>
+  {% endblock head%} {% block main %}
+  <div class="container my-5">
+    <hr class="border border-warning" />
 
-<hr class="border border-light">
     <div>
-      <h2 class="text-warning mt-5 mb-3">What Sets Us Apart</h2>
-      <ul class="text-light list-unstyled">
-        <li class="mb-3">Cutting-edge Facilities: Our state-of-the-art gym is equipped with the latest technology and premium fitness equipment to ensure a top-tier workout experience.</li>
-        <li class="mb-3"> Expert Guidance: Our team of certified trainers is committed to your success. Receive personalized fitness plans, expert advice, and ongoing support to maximize your results.</li>
-        <li class="mb-3">Diverse Workouts: Explore a range of innovative workout programs, from high-intensity interval training (HIIT) to specialized strength training, tailored to meet your unique needs.</li>
-      </ul>
+      <h2 class="text-warning">Community and Support</h2>
+      <p class="text-dark">
+        Join a thriving fitness community that encourages and motivates each
+        other. At PowerPulseGYM, we believe that a supportive environment is key
+        to achieving lasting fitness success.
+      </p>
     </div>
-<hr class="border border-light">
-    
-    {% endblock head%}
-    {% block main %}
-    <div class="container my-5">
-    <hr class="border border-warning">
 
-        <div>
-            <h2 class="text-warning">Community and Support</h2>
-            <p class="text-dark">Join a thriving fitness community that encourages and motivates each other. At PowerPulseGYM, we believe that a supportive environment is key to achieving lasting fitness success.</p>
-        </div>
+    <hr class="border border-warning" />
 
-    <hr class="border border-warning">
-        
-        <div>
-            <h2 class="text-warning">Join Us Today</h2>
-            <p class="text-dark">Ready to elevate your fitness journey? Explore our membership options, discover our diverse classes, and experience the PowerPulseGYM difference. Welcome to a place where professionalism meets results!</p>
-        </div>
-        
+    <div>
+      <h2 class="text-warning">Join Us Today</h2>
+      <p class="text-dark">
+        Ready to elevate your fitness journey? Explore our membership options,
+        discover our diverse classes, and experience the PowerPulseGYM
+        difference. Welcome to a place where professionalism meets results!
+      </p>
     </div>
-    
-{% endblock main %}
+  </div>
+
+  {% endblock main %}
+</div>
