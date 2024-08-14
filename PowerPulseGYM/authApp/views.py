@@ -162,7 +162,7 @@ def enroll_now(request):
 def profile(request):
     if request.user.is_authenticated:
         try:
-            user = Enroll.objects.get(phone=request.user.username)
+            user = Enroll.objects.filter(phone=request.user.username).order_by('-id').first()
             print(user.name, user.email)
             context = {'user': user}
             return render(request, "profile.html", context)
