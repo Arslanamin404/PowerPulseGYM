@@ -17,7 +17,7 @@
             <form action = "{% url "enroll" %}" method = "POST">
                 {% csrf_token %}
                 <div class="row my-3">
-                    <input type="text" id="fullname" class="form-control mb-2" name="name" placeholder="Full Name" required>
+                    <input type="text" id="fullname" class="form-control mb-2" name="name" value="{{user.get_full_name}}" placeholder="Full Name" required>
                 </div>
                 <div class="row mb-3">
                     <input type="email" id="Email" class="form-control mb-2" name="email" value="{{user.email}}" placeholder="Email" readonly required>
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <input type="text" class="form-control mb-2" name="address" placeholder="Address" required>
+                    <input type="text" class="form-control mb-2" name="address" value="{{user.address}}" placeholder="Address" required>
                 </div>
 
                 <div class="row mb-3">

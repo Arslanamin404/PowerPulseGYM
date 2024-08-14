@@ -138,16 +138,39 @@ def enroll_now(request):
                     request, "Invalid Phone number! Please enter a valid Phone Number.")
                 return redirect('enroll')
             else:
-                enrollment = Enroll(user=request.user,  # Add this line to associate with the logged-in user
-                                    name=name,
-                                    email=email,
-                                    phone=phone,
-                                    gender=gender,
-                                    date_of_birth=dob,
-                                    membership_plan=membership_plan,
-                                    trainer=trainer,
-                                    address=address)
-                enrollment.save()
+                # Check if the user already has an enrollment
+                enrollment = Enroll.objects.filter(user=request.user).order_by('-id').first()
+
+                if enrollment:
+                    # Update the existing enrollment details
+                    enrollment.name = name
+                    enrollment.email = email
+                    enrollment.phone = phone
+                    enrollment.gender = gender
+                    enrollment.date_of_birth = dob
+                    enrollment.membership_plan = membership_plan
+                    enrollment.payment_status = "Unpaid"
+                    enrollment.payment_paid = None
+                    enrollment.due_date =None
+                    enrollment.trainer = trainer
+                    enrollment.address = address
+                    enrollment.save()
+
+                    messages.success(
+                        request, "Your enrollment details have been updated successfully!")
+                else:
+                    # Create a new enrollment
+                    enrollment = Enroll(user=request.user,  # Associate with the logged-in user
+                                        name=name,
+                                        email=email,
+                                        phone=phone,
+                                        gender=gender,
+                                        date_of_birth=dob,
+                                        membership_plan=membership_plan,
+                                        trainer=trainer,
+                                        address=address)
+                    enrollment.save()
+
 
                 messages.success(
                     request, "Congratulations! You have enrolled successfully. Thanks for joining us!")
