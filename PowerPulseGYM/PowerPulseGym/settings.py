@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u$1l7mytv!tauykbxj)40yi8e-ou32=)+czwmde06zdhtptc8r'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # false for deployment and True for development
@@ -31,18 +34,13 @@ ALLOWED_HOSTS = ['*']
 
 
 # Email configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-<<<<<<< HEAD
-EMAIL_HOST_USER = 'futuregen.jk@gmail.com'
-EMAIL_HOST_PASSWORD = 'lmioisyjkqrvsglc'  # app password
-=======
-EMAIL_HOST_USER = 'your_email_id'
-EMAIL_HOST_PASSWORD = 'your_app_password'  
->>>>>>> 607207c76405520f67b4bc3cf04486dd09d0f281
-DEFAULT_FROM_EMAIL = 'noreply@domain.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
 
 
 # Application definition
@@ -93,10 +91,10 @@ WSGI_APPLICATION = 'PowerPulseGym.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gym_website',
-        'USER': 'root',
-        'PASSWORD': 'futuregen',
-        'HOST': 'localhost'
+        'NAME': os.getenv('NAME'),
+        'USER': os.getenv('USER'),
+        'PASSWORD': os.getenv('PASSWORD'),
+        'HOST': os.getenv('HOST')
     }
 }
 
@@ -125,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Kolkata/Asia'
 
 USE_I18N = True
 
