@@ -38,14 +38,9 @@ EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-<<<<<<< HEAD
-EMAIL_HOST_USER = 'futuregen.jk@gmail.com'
-EMAIL_HOST_PASSWORD = 'lmioisyjkqrvsglc'  # app password
-=======
-EMAIL_HOST_USER = 'your_email_id'
-EMAIL_HOST_PASSWORD = 'your_app_password'  
->>>>>>> 607207c76405520f67b4bc3cf04486dd09d0f281
-DEFAULT_FROM_EMAIL = 'noreply@domain.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
 
 
 # Application definition
