@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Email configuration
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = 587
+EMAIL_PORT = int(os.getenv('EMAIL_PORT'))
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
@@ -90,11 +90,12 @@ WSGI_APPLICATION = 'PowerPulseGym.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': os.getenv('ENGINE'),
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
         'PASSWORD': os.getenv('PASSWORD'),
-        'HOST': os.getenv('HOST')
+        'HOST': os.getenv('HOST'),
+        'PORT': int(os.getenv('PORT'))
     }
 }
 
